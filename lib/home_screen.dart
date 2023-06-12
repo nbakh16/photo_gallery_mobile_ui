@@ -9,8 +9,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Photo Gallery'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -33,13 +35,11 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 3,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              padding: EdgeInsets.all(8),
-              children: [
+            Wrap(
+              alignment: WrapAlignment.start,
+              spacing: 8,
+              runSpacing: 8,
+              children: const [
                 PhotoButton(imageUrl: 'https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg'),
                 PhotoButton(imageUrl: 'https://images.pexels.com/photos/3244513/pexels-photo-3244513.jpeg'),
                 PhotoButton(imageUrl: 'https://images.pexels.com/photos/4101555/pexels-photo-4101555.jpeg'),
@@ -50,22 +50,32 @@ class HomeScreen extends StatelessWidget {
             ),
             ListView(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              children: [
+              physics: const NeverScrollableScrollPhysics(),
+              children: const [
                 ListTile(
                   leading: Icon(Icons.photo),
-                  title: Text('Photo 1'),
-                  subtitle: Text('Description 1'),
+                  title: Text('Sample Photo 1'),
+                  subtitle: Text('Category 1'),
                 ),
                 ListTile(
                   leading: Icon(Icons.photo),
-                  title: Text('Photo 2'),
-                  subtitle: Text('Description 2'),
+                  title: Text('Sample Photo 2'),
+                  subtitle: Text('Category 2'),
                 ),
                 ListTile(
                   leading: Icon(Icons.photo),
-                  title: Text('Photo 3'),
-                  subtitle: Text('Description 3'),
+                  title: Text('Sample Photo 3'),
+                  subtitle: Text('Category 3'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.photo),
+                  title: Text('Sample Photo 4'),
+                  subtitle: Text('Category 4'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.photo),
+                  title: Text('Sample Photo 5'),
+                  subtitle: Text('Category 5'),
                 ),
               ],
             ),

@@ -10,21 +10,45 @@ class PhotoButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        final snackBar = SnackBar(content: Text('Clicked on photo!'));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Image.network(imageUrl, height: 150, fit: BoxFit.cover),
-          SizedBox(height: 8),
-          Text(
-            'Caption',
-            style: TextStyle(fontSize: 12),
+    return SizedBox(
+      height: 110,
+      width: 110,
+      child: ElevatedButton(
+        clipBehavior: Clip.antiAlias,
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.0),
           ),
-        ],
+          padding: EdgeInsets.zero,
+        ),
+        onPressed: () {
+          final snackBar = SnackBar(content: Text('Clicked on photo!'));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(imageUrl), fit: BoxFit.fill
+            )
+          ),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Text("Caption",
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                backgroundColor: Colors.black.withAlpha(90),
+              ),
+            )
+          ),
+        ),
+        // child: Stack(
+        //   alignment: Alignment.bottomCenter,
+        //   children: [
+        //     Image.network(imageUrl, height: 500, width: 500, fit: BoxFit.cover,),
+        //     Text("Image")
+        //   ],
+        // )
       ),
     );
   }
