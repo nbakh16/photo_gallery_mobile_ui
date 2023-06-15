@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
+import 'http_override.dart';
 
 void main() {
+  HttpOverrides.global = new MyHttpOverrides();
   runApp(const PhotoGalleryApp());
 }
 

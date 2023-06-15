@@ -11,8 +11,8 @@ class PhotoButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 110,
-      width: 110,
+      height: 115,
+      width: 115,
       child: ElevatedButton(
         clipBehavior: Clip.antiAlias,
         style: ElevatedButton.styleFrom(
@@ -28,7 +28,7 @@ class PhotoButton extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(imageUrl), fit: BoxFit.fill
+              image: NetworkImage(imageUrl), fit: BoxFit.cover
             )
           ),
           child: Align(
